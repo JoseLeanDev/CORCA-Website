@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CORCA Website"
+description = "The CORCA corporate website installed from the supplied static export, preserving its original pages, copy, imagery, and visual design."
+version = "1.0.0"
+id = "artifacts/corca-website"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23517
+
+[services.development]
+run = "pnpm --filter @workspace/corca-website run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/corca-website", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/corca-website/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23517"
+BASE_PATH = "/"

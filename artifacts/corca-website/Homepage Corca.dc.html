@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>CORCA — Corporación Caraliant, S.A.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #f6f7f9; color: #1c2536; font-family: 'Archivo', sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #2e5e8f; text-decoration: none; }
+  a:hover { color: #16243a; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+
+<!-- NAV -->
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #e4e8ee;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+    <a href="#inicio" style="display: flex; align-items: center;"><img src="assets/corca-logo-navy.png" alt="CORCA" style="height: 30px; display: block;"></a>
+    <nav style="display: flex; align-items: center; gap: 32px;">
+      <a href="#inicio" style="font-size: 14px; font-weight: 600; letter-spacing: 0.04em; color: #16243a;">Inicio</a>
+      <a href="#quienes-somos" style="font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: #55607280;" style-hover="color: #16243a;">Quiénes Somos</a>
+      <a href="#manufactura" style="font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: #556072;" style-hover="color: #16243a;">Manufactura</a>
+      <a href="#distribucion" style="font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: #556072;" style-hover="color: #16243a;">Distribución</a>
+      <a href="#contacto" style="font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: #556072;" style-hover="color: #16243a;">Contacto</a>
+    </nav>
+    <a href="#contacto" style="background: #16243a; color: #ffffff; font-size: 14px; font-weight: 600; padding: 10px 22px; border-radius: 6px; letter-spacing: 0.02em;" style-hover="background: #2e4165; color: #ffffff;">Contáctenos</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="inicio" style="background: linear-gradient(160deg, #16243a 0%, #1d3050 70%, #24395c 100%); color: #ffffff; position: relative; overflow: hidden;">
+  <div style="position: absolute; top: -120px; right: -80px; width: 520px; height: 520px; border-radius: 50%; background-image: radial-gradient(rgba(255,255,255,0.13) 1.6px, transparent 1.6px); background-size: 20px 20px; mask-image: radial-gradient(circle at center, black 0%, transparent 68%); -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 68%); pointer-events: none;"></div>
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px 32px 72px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; position: relative;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 7px 16px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #b9c6d9; font-weight: 500;">Corporación Caraliant, S.A. · Guatemala · Desde 2014</div>
+      <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: 54px; line-height: 1.08; font-weight: 700; letter-spacing: -0.015em; margin: 26px 0 0; text-wrap: pretty;">Producimos calidad.<br>Distribuimos confianza.<br>Construimos marcas.</h1>
+      <p style="font-size: 17px; line-height: 1.65; color: #c3cddc; max-width: 520px; margin: 24px 0 0; text-wrap: pretty;">Desde 2014 desarrollamos soluciones para el mercado de consumo masivo en Guatemala, integrando distribución, manufactura y desarrollo de marcas propias y ajenas para ofrecer productos de alta calidad con un servicio ágil y cercano.</p>
+      <div style="display: flex; gap: 14px; margin-top: 36px;">
+        <a href="#manufactura" style="background: #e0a83f; color: #16243a; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 6px;" style-hover="background: #edbb5c; color: #16243a;">Conozca nuestros productos</a>
+        <a href="#contacto" style="border: 1px solid rgba(255,255,255,0.35); color: #ffffff; font-weight: 600; font-size: 15px; padding: 14px 28px; border-radius: 6px;" style-hover="background: rgba(255,255,255,0.08); color: #ffffff;">Sea nuestro distribuidor</a>
+      </div>
+    </div>
+    <div style="position: relative;">
+      <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.12);">
+        <image-slot id="hero-planta" shape="rect" placeholder="Foto: planta / flota CORCA"></image-slot>
+      </div>
+      <div style="position: absolute; bottom: -18px; left: -18px; background: #ffffff; color: #16243a; border-radius: 10px; padding: 16px 22px; box-shadow: 0 16px 40px -12px rgba(10,20,40,0.4); display: flex; align-items: center; gap: 14px;">
+        <div style="width: 10px; height: 10px; border-radius: 50%; background: #e0a83f;"></div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px;">Manufactura · Distribución · Marcas</div>
+      </div>
+    </div>
+  </div>
+  <!-- STATS -->
+  <div style="border-top: 1px solid rgba(255,255,255,0.14); position: relative;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 30px 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;" ref="{{ statsRef }}">
+      <div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 700; color: #e0a83f;">{{ statVisitas }}</div>
+        <div style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #b9c6d9; margin-top: 4px;">Visitas a puntos de venta</div>
+      </div>
+      <div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 700; color: #e0a83f;">{{ statRaciones }}</div>
+        <div style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #b9c6d9; margin-top: 4px;">Raciones entregadas al mercado</div>
+      </div>
+      <div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 700; color: #e0a83f;">{{ statCentros }}</div>
+        <div style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #b9c6d9; margin-top: 4px;">Centros de distribución</div>
+      </div>
+      <div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 700; color: #e0a83f;">{{ statDeptos }}</div>
+        <div style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #b9c6d9; margin-top: 4px;">Departamentos con cobertura</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUE HACEMOS -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px 32px 40px;">
+  <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px;">
+    <div>
+      <div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #b07f24; font-weight: 700;">Qué hacemos</div>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0 0; color: #16243a;">Un modelo integrado, de la planta al punto de venta</h2>
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px;">
+    <div style="background: #ffffff; border: 1px solid #e4e8ee; border-radius: 12px; padding: 32px;" style-hover="border-color: #16243a; box-shadow: 0 12px 32px -16px rgba(22,36,58,0.25);">
+      <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #b07f24; letter-spacing: 0.06em;">01</div>
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; margin: 14px 0 10px; color: #16243a;">Distribución</h3>
+      <p style="font-size: 15px; line-height: 1.65; color: #556072; margin: 0;">Abastecemos tiendas de barrio, supermercados independientes, codistribuidores y mayoristas mediante una eficiente red logística que nos permite llegar diariamente a miles de consumidores.</p>
+    </div>
+    <div style="background: #ffffff; border: 1px solid #e4e8ee; border-radius: 12px; padding: 32px;" style-hover="border-color: #16243a; box-shadow: 0 12px 32px -16px rgba(22,36,58,0.25);">
+      <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #b07f24; letter-spacing: 0.06em;">02</div>
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; margin: 14px 0 10px; color: #16243a;">Manufactura</h3>
+      <p style="font-size: 15px; line-height: 1.65; color: #556072; margin: 0;">Producimos fideo oriental tipo Chao Mein bajo estrictos estándares de calidad, desarrollando productos que responden a las preferencias del consumidor guatemalteco, mesoamericano y norteamericano.</p>
+    </div>
+    <div style="background: #ffffff; border: 1px solid #e4e8ee; border-radius: 12px; padding: 32px;" style-hover="border-color: #16243a; box-shadow: 0 12px 32px -16px rgba(22,36,58,0.25);">
+      <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #b07f24; letter-spacing: 0.06em;">03</div>
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; margin: 14px 0 10px; color: #16243a;">Desarrollo de marcas</h3>
+      <p style="font-size: 15px; line-height: 1.65; color: #556072; margin: 0;">Construimos y fortalecemos marcas propias y representadas mediante estrategias comerciales, mercadeo y distribución que generan crecimiento sostenible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUIENES SOMOS -->
+<section id="quienes-somos" style="max-width: 1200px; margin: 0 auto; padding: 72px 32px;">
+  <div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: start;">
+    <div>
+      <div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #b07f24; font-weight: 700;">Quiénes somos</div>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0 20px; color: #16243a;">Una empresa guatemalteca en crecimiento constante</h2>
+      <p style="font-size: 16px; line-height: 1.7; color: #556072; margin: 0 0 16px; text-wrap: pretty;">Corporación Caraliant, S.A. (CORCA) fue fundada el 10 de febrero de 2014 con la visión de desarrollar un modelo de negocio sólido en la comercialización y distribución de productos de consumo masivo en Guatemala.</p>
+      <p style="font-size: 16px; line-height: 1.7; color: #556072; margin: 0 0 28px; text-wrap: pretty;">Hoy integramos manufactura, comercialización y distribución, respaldados por una infraestructura logística eficiente, capacidad industrial y alianzas estratégicas que impulsan nuestro crecimiento.</p>
+      <a href="#" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; color: #16243a; border-bottom: 2px solid #e0a83f; padding-bottom: 3px;" style-hover="color: #b07f24;">Conozca nuestra historia →</a>
+    </div>
+    <div style="display: grid; gap: 0;">
+      <sc-for list="{{ hitos }}" as="hito" hint-placeholder-count="5">
+        <div style="display: grid; grid-template-columns: 84px 20px 1fr; gap: 18px; align-items: start;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 19px; color: #16243a; text-align: right; padding-top: 2px;">{{ hito.anio }}</div>
+          <div style="display: flex; flex-direction: column; align-items: center; height: 100%;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: #e0a83f; border: 3px solid #ffffff; box-shadow: 0 0 0 1px #d8ba85; flex-shrink: 0; margin-top: 6px;"></div>
+            <div style="width: 2px; flex: 1; background: #e4e8ee; margin-top: 4px;"></div>
+          </div>
+          <div style="padding-bottom: 30px;">
+            <div style="font-weight: 700; font-size: 16px; color: #16243a;">{{ hito.titulo }}</div>
+            <div style="font-size: 14.5px; line-height: 1.6; color: #556072; margin-top: 4px;">{{ hito.texto }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- MANUFACTURA -->
+<section id="manufactura" style="background: #16243a; color: #ffffff;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+    <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.14);">
+      <image-slot id="manufactura-linea" shape="rect" placeholder="Foto: línea de producción Chao Mein"></image-slot>
+    </div>
+    <div>
+      <div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #e0a83f; font-weight: 700;">Manufactura</div>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0 20px;">Producción propia de fideos tipo Chao Mein</h2>
+      <p style="font-size: 16px; line-height: 1.7; color: #c3cddc; margin: 0 0 12px; text-wrap: pretty;">Desde 2022 operamos nuestra propia planta de fideos orientales, con marcas desarrolladas para los gustos de nuestra gente y acuerdos de maquila con empresas líderes de Guatemala y Centroamérica.</p>
+      <p style="font-size: 16px; line-height: 1.7; color: #c3cddc; margin: 0 0 28px; text-wrap: pretty;">En 2026 iniciamos la exportación de nuestro Chao Mein al mercado de los Estados Unidos.</p>
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <div style="background: #ffffff; border-radius: 10px; padding: 10px 16px; display: flex; align-items: center;"><img src="assets/brand-changcheng.png" alt="Chang Cheng Chao Mein" style="height: 62px; display: block; border-radius: 6px;"></div>
+        <div style="font-size: 14px; color: #b9c6d9; line-height: 1.5;">Chang Cheng<br><span style="color: #7d8ca3;">Fideos orientales · Hecho en Guatemala</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRIBUCION / MARCAS -->
+<section id="distribucion" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px;">
+  <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+    <div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #b07f24; font-weight: 700;">Distribución</div>
+    <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0 16px; color: #16243a;">Marcas que llegan a todo el país</h2>
+    <p style="font-size: 16px; line-height: 1.7; color: #556072; margin: 0;">Representamos y distribuimos marcas líderes de consumo masivo a través de nuestra red de motocicletas y vehículos tipo panel, con presencia diaria en el comercio tradicional.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px;">
+    <sc-for list="{{ marcas }}" as="marca" hint-placeholder-count="4">
+      <div style="background: #ffffff; border: 1px solid #e4e8ee; border-radius: 12px; height: 150px; display: flex; align-items: center; justify-content: center; padding: 28px;" style-hover="border-color: #16243a; box-shadow: 0 12px 32px -16px rgba(22,36,58,0.25);">
+        <img src="{{ marca.src }}" alt="{{ marca.nombre }}" style="max-width: 100%; max-height: 82px; object-fit: contain; display: block;">
+      </div>
+    </sc-for>
+  </div>
+  <!-- COBERTURA -->
+  <div style="margin-top: 88px; background: #ffffff; border: 1px solid #e4e8ee; border-radius: 16px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;">
+    <div>
+      <div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #b07f24; font-weight: 700;">Cobertura</div>
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; margin: 12px 0 14px; color: #16243a;">Presencia en 14 departamentos de Guatemala</h3>
+      <p style="font-size: 15px; line-height: 1.65; color: #556072; margin: 0 0 24px;">Nuestra operación atiende gran parte del territorio nacional desde 6 centros de distribución.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <sc-for list="{{ departamentos }}" as="depto" hint-placeholder-count="14">
+          <div style="border: 1px solid #d6dce5; border-radius: 999px; padding: 7px 15px; font-size: 13.5px; font-weight: 500; color: #38455c; background: #f6f7f9;">{{ depto }}</div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 420px; border-radius: 12px; overflow: hidden;">
+      <image-slot id="mapa-cobertura" shape="rect" placeholder="Mapa de cobertura (Guatemala)"></image-slot>
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTA DE VALOR -->
+<section style="background: #eceff3; border-top: 1px solid #e0e5ec; border-bottom: 1px solid #e0e5ec;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px 32px;">
+    <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: start;">
+      <div>
+        <div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #b07f24; font-weight: 700;">Nuestra propuesta de valor</div>
+        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0 16px; color: #16243a;">El éxito de nuestros clientes depende de la rapidez, la confianza y la disponibilidad</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+        <sc-for list="{{ propuesta }}" as="item" hint-placeholder-count="6">
+          <div style="background: #ffffff; border: 1px solid #e4e8ee; border-radius: 10px; padding: 20px 22px; display: flex; align-items: center; gap: 14px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #e0a83f; flex-shrink: 0;"></div>
+            <div style="font-weight: 600; font-size: 15.5px; color: #16243a;">{{ item }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRABAJEMOS JUNTOS -->
+<section id="contacto" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px;">
+  <div style="text-align: center; max-width: 620px; margin: 0 auto 48px;">
+    <div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #b07f24; font-weight: 700;">Trabajemos juntos</div>
+    <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0 0; color: #16243a;">Crezcamos juntos</h2>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+    <div style="background: #16243a; color: #ffffff; border-radius: 14px; padding: 36px 32px; display: flex; flex-direction: column; gap: 12px;">
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 21px; font-weight: 600; margin: 0;">¿Tiene un negocio?</h3>
+      <p style="font-size: 15px; line-height: 1.6; color: #c3cddc; margin: 0; flex: 1;">Conozca nuestro portafolio y descubra un proveedor confiable para hacer crecer sus ventas.</p>
+      <a href="#" style="align-self: start; background: #e0a83f; color: #16243a; font-weight: 700; font-size: 14px; padding: 12px 22px; border-radius: 6px; margin-top: 10px;" style-hover="background: #edbb5c; color: #16243a;">Solicitar información</a>
+    </div>
+    <div style="background: #16243a; color: #ffffff; border-radius: 14px; padding: 36px 32px; display: flex; flex-direction: column; gap: 12px;">
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 21px; font-weight: 600; margin: 0;">¿Desea distribuir nuestras marcas?</h3>
+      <p style="font-size: 15px; line-height: 1.6; color: #c3cddc; margin: 0; flex: 1;">Únase a nuestra red de codistribuidores y crezcamos juntos.</p>
+      <a href="#" style="align-self: start; background: #e0a83f; color: #16243a; font-weight: 700; font-size: 14px; padding: 12px 22px; border-radius: 6px; margin-top: 10px;" style-hover="background: #edbb5c; color: #16243a;">Quiero ser distribuidor</a>
+    </div>
+    <div style="background: #16243a; color: #ffffff; border-radius: 14px; padding: 36px 32px; display: flex; flex-direction: column; gap: 12px;">
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 21px; font-weight: 600; margin: 0;">¿Quiere formar parte de CORCA?</h3>
+      <p style="font-size: 15px; line-height: 1.6; color: #c3cddc; margin: 0; flex: 1;">Estamos en constante búsqueda de personas comprometidas con el crecimiento y la excelencia.</p>
+      <a href="#" style="align-self: start; background: #e0a83f; color: #16243a; font-weight: 700; font-size: 14px; padding: 12px 22px; border-radius: 6px; margin-top: 10px;" style-hover="background: #edbb5c; color: #16243a;">Ver oportunidades</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #0f1a2b; color: #8b99ad;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 56px 32px 40px;">
+    <div style="display: flex; justify-content: space-between; align-items: start; gap: 48px; flex-wrap: wrap;">
+      <div>
+        <img src="assets/corca-logo-white.png" alt="CORCA" style="height: 28px; display: block;">
+        <p style="font-size: 14px; line-height: 1.6; max-width: 320px; margin: 18px 0 0;">Corporación Caraliant, S.A. — Manufactura, comercialización y distribución de productos de consumo masivo en Guatemala.</p>
+      </div>
+      <nav style="display: flex; gap: 40px;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5c6b82; font-weight: 700;">Navegación</div>
+          <a href="#inicio" style="font-size: 14px; color: #b9c6d9;" style-hover="color: #ffffff;">Inicio</a>
+          <a href="#quienes-somos" style="font-size: 14px; color: #b9c6d9;" style-hover="color: #ffffff;">Quiénes Somos</a>
+          <a href="#manufactura" style="font-size: 14px; color: #b9c6d9;" style-hover="color: #ffffff;">Manufactura</a>
+          <a href="#distribucion" style="font-size: 14px; color: #b9c6d9;" style-hover="color: #ffffff;">Distribución</a>
+          <a href="#contacto" style="font-size: 14px; color: #b9c6d9;" style-hover="color: #ffffff;">Contacto</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5c6b82; font-weight: 700;">Contacto</div>
+          <div style="font-size: 14px; color: #b9c6d9;">Ciudad de Guatemala, Guatemala</div>
+          <div style="font-size: 14px; color: #b9c6d9;">info@corca.com.gt</div>
+        </div>
+      </nav>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; padding-top: 22px; font-size: 13px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div>© 2026 Corporación Caraliant, S.A. Todos los derechos reservados.</div>
+      <div>Producimos calidad. Distribuimos confianza. Construimos marcas.</div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;contadoresAnimados&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Comportamiento&quot;}}">
+class Component extends DCLogic {
+  state = { t: 0 };
+  renderVals() {
+    const animar = this.props.contadoresAnimados ?? true;
+    const t = animar ? this.state.t : 1;
+    const ease = 1 - Math.pow(1 - t, 3);
+    const fmt = (n) => Math.round(n * ease).toLocaleString('es-GT');
+    return {
+      statsRef: (el) => { this._stats = el; },
+      statVisitas: fmt(54500),
+      statRaciones: fmt(566400),
+      statCentros: fmt(6),
+      statDeptos: fmt(14),
+      hitos: [
+        { anio: '2014', titulo: 'Fundación de CORCA', texto: 'Distribución de snacks, chocolates, dulces y aceites con una red innovadora de 40 motocicletas al servicio del comercio tradicional.' },
+        { anio: '2022', titulo: 'Ingreso a la manufactura', texto: 'Adquisición de la planta de fideos orientales tipo Chao Mein y lanzamiento de marcas propias.' },
+        { anio: '2023', titulo: 'Acuerdos de maquila', texto: 'Fabricación para empresas líderes del mercado guatemalteco y centroamericano.' },
+        { anio: '2025', titulo: 'Flota de vehículos panel', texto: 'Mayor cobertura geográfica, clientes de mayor volumen y mejores tiempos de entrega.' },
+        { anio: '2026', titulo: 'Exportación y alianzas', texto: 'Inicio de exportaciones a Estados Unidos y alianza con Grupo BOCEL para pastas alimenticias en Guatemala, El Salvador y Honduras.' },
+      ],
+      marcas: [
+        { nombre: 'Olimpia', src: 'assets/brand-olimpia.png' },
+        { nombre: 'Tronix', src: 'assets/brand-tronix.jpg' },
+        { nombre: 'Productos Roland', src: 'assets/brand-roland.png' },
+        { nombre: '¡YaEstá!', src: 'assets/brand-yaesta.png' },
+      ],
+      departamentos: ['Ciudad de Guatemala', 'Sacatepéquez', 'Chimaltenango', 'Escuintla', 'Sololá', 'Quetzaltenango', 'Huehuetenango', 'Totonicapán', 'Quiché', 'Alta Verapaz', 'Baja Verapaz', 'Jalapa', 'Santa Rosa', 'Jutiapa'],
+      propuesta: ['Cobertura eficiente', 'Servicio oportuno', 'Productos de calidad', 'Atención personalizada', 'Relaciones de largo plazo', 'Innovación constante'],
+    };
+  }
+  componentDidMount() {
+    if (!(this.props.contadoresAnimados ?? true)) return;
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting) && !this._started) {
+        this._started = true;
+        const t0 = performance.now();
+        const tick = (now) => {
+          const t = Math.min(1, (now - t0) / 1600);
+          this.setState({ t });
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        io.disconnect();
+      }
+    }, { threshold: 0.3 });
+    if (this._stats) io.observe(this._stats);
+  }
+}
+</script>
+</body>
+</html>
