@@ -84,14 +84,12 @@
 <section style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 40px;">
   <div data-reveal="" style="transition: opacity .7s ease, transform .7s ease; max-width: 640px;">
     <div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #b07f24; font-weight: 700;">Nuestras capacidades</div>
-    <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0 0; color: #16243a;">Capacidad industrial con control propio</h2>
+    <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0 0; color: #16243a;">Capacidad industrial con estándares de calidad internacional</h2>
   </div>
   <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;">
     <sc-for list="{{ capacidades }}" as="c" hint-placeholder-count="3">
-      <div data-reveal="" style="transition: opacity .7s ease, transform .7s ease; background: #ffffff; border: 1px solid #e4e8ee; border-radius: 14px; padding: 34px;" style-hover="border-color: #16243a; transform: translateY(-6px); box-shadow: 0 18px 40px -18px rgba(22,36,58,0.28);">
+      <div data-reveal="" style="transition: opacity .7s ease, transform .7s ease; background: #ffffff; border: 1px solid #e4e8ee; border-radius: 14px; padding: 34px; min-height: 122px; display: flex; align-items: center; justify-content: center;" style-hover="border-color: #16243a; transform: translateY(-6px); box-shadow: 0 18px 40px -18px rgba(22,36,58,0.28);">
         <div style="width: 54px; height: 54px; border-radius: 12px; background: #16243a; display: flex; align-items: center; justify-content: center;">{{ c.icono }}</div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 21px; font-weight: 600; margin: 20px 0 10px; color: #16243a;">{{ c.titulo }}</h3>
-        <p style="font-size: 15px; line-height: 1.65; color: #556072; margin: 0;">{{ c.texto }}</p>
       </div>
     </sc-for>
   </div>
