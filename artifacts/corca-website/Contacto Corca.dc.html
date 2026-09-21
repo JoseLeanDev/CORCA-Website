@@ -145,23 +145,6 @@
   </div>
 </section>
 
-<!-- CANALES DIRECTOS -->
-<section style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 40px;">
-  <div data-reveal="" style="transition: opacity .7s ease, transform .7s ease; max-width: 620px;">
-    <div style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #b07f24; font-weight: 700;">Canales directos</div>
-    <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0 0; color: #16243a;">Escriba al área que necesita</h2>
-  </div>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;">
-    <sc-for list="{{ areas }}" as="a" hint-placeholder-count="3">
-      <div data-reveal="" style="transition: opacity .7s ease, transform .7s ease; background: #ffffff; border: 1px solid #e4e8ee; border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 10px;" style-hover="border-color: #16243a; transform: translateY(-6px); box-shadow: 0 18px 40px -18px rgba(22,36,58,0.28);">
-        <div style="width: 50px; height: 50px; border-radius: 12px; background: #16243a; display: flex; align-items: center; justify-content: center;">{{ a.icono }}</div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; margin: 12px 0 0; color: #16243a;">{{ a.titulo }}</h3>
-        <p style="font-size: 14.5px; line-height: 1.6; color: #556072; margin: 0; flex: 1;">{{ a.texto }}</p>
-        <div style="font-size: 14.5px; font-weight: 700; color: #b07f24; margin-top: 6px;">{{ a.correo }}</div>
-      </div>
-    </sc-for>
-  </div>
-</section>
 
 <!-- UBICACION -->
 <section style="max-width: 1240px; margin: 0 auto; padding: 48px 32px 96px;">
