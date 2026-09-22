@@ -1,0 +1,1 @@
+- [CORCA Responsive Implementation](corca-responsive.md) — pitfalls, classes added, carousel JS fix, sticky sidebar fix, build command

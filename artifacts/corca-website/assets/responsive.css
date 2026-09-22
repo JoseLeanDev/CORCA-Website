@@ -101,8 +101,47 @@
 /* ── MOBILE (≤ 768px) ───────────────────────────── */
 @media (max-width: 768px) {
 
-  /* Product carousel — 1 card per view on mobile.
-     JS calculates pixel-based transform; CSS just resizes cards to match. */
+  /* ── Sticky sidebar → static when grid collapses ── */
+  .cw-sticky-col {
+    position: static !important;
+    top: auto !important;
+  }
+
+  /* ── Heading font sizes ─────────────────────────── */
+  h1[style*="font-size"] {
+    font-size: clamp(26px, 7.5vw, 36px) !important;
+    line-height: 1.1 !important;
+  }
+  h2[style*="font-size"] {
+    font-size: clamp(20px, 6vw, 28px) !important;
+    line-height: 1.15 !important;
+  }
+  h3[style*="font-size"] {
+    font-size: clamp(17px, 5vw, 22px) !important;
+    line-height: 1.2 !important;
+  }
+
+  /* ── Section padding ────────────────────────────── */
+  /* Reduce horizontal padding: any container with 32px side padding */
+  [style*="padding: "][style*=" 32px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  /* Reduce top padding for tall sections */
+  [style*="padding: 88px"],
+  [style*="padding: 92px"],
+  [style*="padding: 84px"] {
+    padding-top: 48px !important;
+    padding-bottom: 40px !important;
+  }
+  [style*="padding: 72px 32px"],
+  [style*="padding: 80px 32px"] {
+    padding-top: 40px !important;
+    padding-bottom: 36px !important;
+  }
+
+  /* ── Product carousel ───────────────────────────── */
+  /* JS calculates pixel-based transform; CSS just resizes cards to match. */
   .cw-carousel-track {
     gap: 16px !important;
   }
@@ -110,7 +149,7 @@
     flex: 0 0 100% !important;   /* one full-width card at a time */
   }
 
-  /* Header */
+  /* ── Header */
   .cw-header {
     height: 60px !important;
     padding: 0 20px !important;
