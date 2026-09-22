@@ -101,6 +101,28 @@
 /* ── MOBILE (≤ 768px) ───────────────────────────── */
 @media (max-width: 768px) {
 
+  /* Product carousel → native horizontal scroll */
+  .cw-carousel-outer {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    /* hide scrollbar visually */
+    scrollbar-width: none !important;
+  }
+  .cw-carousel-outer::-webkit-scrollbar { display: none; }
+
+  .cw-carousel-track {
+    transform: none !important;   /* kill JS translateX */
+    width: max-content !important;
+    gap: 16px !important;
+  }
+  .cw-carousel-track > div {
+    flex: 0 0 80vw !important;
+    max-width: 340px !important;
+    scroll-snap-align: start !important;
+  }
+
   /* Header */
   .cw-header {
     height: 60px !important;
@@ -176,6 +198,9 @@
 
   /* 4-col → 1-col */
   .rg-4 { grid-template-columns: 1fr !important; }
+
+  /* 5-col → 1-col */
+  .rg-5 { grid-template-columns: 1fr !important; }
 
   /* Brand products → 1 col */
   .rg-brand-prods { grid-template-columns: 1fr !important; }
