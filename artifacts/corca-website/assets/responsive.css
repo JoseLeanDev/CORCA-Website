@@ -101,26 +101,13 @@
 /* ── MOBILE (≤ 768px) ───────────────────────────── */
 @media (max-width: 768px) {
 
-  /* Product carousel → native horizontal scroll */
-  .cw-carousel-outer {
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    scroll-snap-type: x mandatory !important;
-    -webkit-overflow-scrolling: touch !important;
-    /* hide scrollbar visually */
-    scrollbar-width: none !important;
-  }
-  .cw-carousel-outer::-webkit-scrollbar { display: none; }
-
+  /* Product carousel — 1 card per view on mobile.
+     JS calculates pixel-based transform; CSS just resizes cards to match. */
   .cw-carousel-track {
-    transform: none !important;   /* kill JS translateX */
-    width: max-content !important;
     gap: 16px !important;
   }
   .cw-carousel-track > div {
-    flex: 0 0 80vw !important;
-    max-width: 340px !important;
-    scroll-snap-align: start !important;
+    flex: 0 0 100% !important;   /* one full-width card at a time */
   }
 
   /* Header */

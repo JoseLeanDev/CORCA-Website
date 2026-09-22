@@ -256,6 +256,13 @@
 <script type="text/x-dc" data-dc-script data-props="{}">
 class Component extends DCLogic {
   state = { i: 0 };
+  componentDidMount() {
+    this._resize = () => { if (typeof this.setState === 'function') this.setState({}); };
+    window.addEventListener('resize', this._resize);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._resize);
+  }
   icon(paths, color, size) {
     return React.createElement('svg', { width: size || 24, height: size || 24, viewBox: '0 0 24 24', fill: 'none', stroke: color || '#e0a83f', strokeWidth: 1.9, strokeLinecap: 'round', strokeLinejoin: 'round' }, paths.map((d, i) => React.createElement('path', { key: i, d })));
   }
@@ -289,7 +296,21 @@ class Component extends DCLogic {
       { img: 'assets/prod-valle-grande-norm.png', nombre: 'Valle Grande', presentacion: 'Chow Mein with soy · 180 g', texto: 'Formato y etiquetado en inglés para el mercado de exportación.' },
     ];
     const i = this.state.i;
-    const maxI = Math.max(0, productos.length - 4);
+    // Mobile-aware carousel: 1 card per view on ≤768px, 4 on desktop
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const perView  = isMobile ? 1 : 4;
+    const cardGap  = isMobile ? 16 : 20;
+    const maxI = Math.max(0, productos.length - perView);
+    const iSafe = Math.min(i, maxI);
+    let trackTransform;
+    if (isMobile) {
+      // Pixel-based: section has 32px padding each side
+      const secPad = 64; // 32 left + 32 right
+      const containerW = Math.max(220, window.innerWidth - secPad);
+      trackTransform = 'translateX(' + (-iSafe * (containerW + cardGap)) + 'px)';
+    } else {
+      trackTransform = 'translateX(calc(' + (-iSafe) + ' * ((100% - 60px) / 4 + 20px)))';
+    }
     return {
       cifras: [
         { valor: '2022', etiqueta: 'Planta propia', icono: gold(P.fabrica, 28) },
@@ -323,12 +344,12 @@ class Component extends DCLogic {
       ],
       paises: ['Guatemala', 'El Salvador', 'Honduras', 'Estados Unidos'],
       productos,
-      trackTransform: 'translateX(calc(' + (-i) + ' * ((100% - 60px) / 4 + 20px)))',
+      trackTransform,
       prev: () => this.setState((s) => ({ i: Math.max(0, s.i - 1) })),
       next: () => this.setState((s) => ({ i: Math.min(maxI, s.i + 1) })),
       dots: Array.from({ length: maxI + 1 }, (_, n) => ({
         onClick: () => this.setState({ i: n }),
-        estilo: 'width:' + (n === i ? '28px' : '10px') + ';height:10px;border-radius:999px;border:none;cursor:pointer;padding:0;transition:all .3s;background:' + (n === i ? '#16243a' : '#cfd6e0') + ';',
+        estilo: 'width:' + (n === iSafe ? '28px' : '10px') + ';height:10px;border-radius:999px;border:none;cursor:pointer;padding:0;transition:all .3s;background:' + (n === iSafe ? '#16243a' : '#cfd6e0') + ';',
       })),
       iconPrev: this.icon(['M15 5 L8 12 L15 19'], '#16243a', 20),
       iconNext: this.icon(['M9 5 L16 12 L9 19'], '#16243a', 20),
