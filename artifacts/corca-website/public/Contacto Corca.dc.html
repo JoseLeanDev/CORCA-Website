@@ -25,19 +25,22 @@
   @keyframes dotsDrift { from { background-position: 0 0; } to { background-position: 0 -400px; } }
   @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.06); } }
 </style>
+  <link rel="stylesheet" href="assets/responsive.css">
 </helmet>
 
+<input type="checkbox" id="cw-nav-check" style="display:none">
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.9); backdrop-filter: blur(14px); border-bottom: 1px solid #e4e8ee;">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px;" class="cw-header">
     <a href="Homepage Corca v2.dc.html" style="display: flex; align-items: center;"><img src="assets/corca-logo-navy.png" alt="CORCA" style="height: 30px; display: block;"></a>
-    <nav style="display: flex; align-items: center; gap: 32px;">
+    <label for="cw-nav-check" class="cw-menu-toggle">&#9776;</label>
+    <nav class="cw-nav" style="display: flex; align-items: center; gap: 32px;">
       <a href="Homepage Corca v2.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: #556072; padding: 4px 0; border-bottom: 2px solid transparent; transition: all .25s;" style-hover="color: #16243a; border-bottom: 2px solid #e0a83f;">Inicio</a>
       <a href="Quienes Somos Corca.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: #556072; padding: 4px 0; border-bottom: 2px solid transparent; transition: all .25s;" style-hover="color: #16243a; border-bottom: 2px solid #e0a83f;">Quiénes Somos</a>
       <a href="Manufactura Corca.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: #556072; padding: 4px 0; border-bottom: 2px solid transparent; transition: all .25s;" style-hover="color: #16243a; border-bottom: 2px solid #e0a83f;">Manufactura</a>
       <a href="Distribucion Corca.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: #556072; padding: 4px 0; border-bottom: 2px solid transparent; transition: all .25s;" style-hover="color: #16243a; border-bottom: 2px solid #e0a83f;">Distribución</a>
       <a href="Contacto Corca.dc.html" style="font-size: 14px; font-weight: 600; letter-spacing: 0.04em; color: #16243a; border-bottom: 2px solid #e0a83f; padding: 4px 0;">Contacto</a>
     </nav>
-    <a href="#formulario" style="background: #16243a; color: #ffffff; font-size: 14px; font-weight: 600; padding: 10px 22px; border-radius: 8px; letter-spacing: 0.02em; transition: all .25s;" style-hover="background: #2e4165; color: #ffffff; transform: translateY(-2px);">Escríbanos</a>
+    <a href="#formulario" class="cw-cta-btn" style="background: #16243a; color: #ffffff; font-size: 14px; font-weight: 600; padding: 10px 22px; border-radius: 8px; letter-spacing: 0.02em; transition: all .25s;" style-hover="background: #2e4165; color: #ffffff; transform: translateY(-2px);">Escríbanos</a>
   </div>
 </header>
 
@@ -81,7 +84,7 @@
 
           <div style="margin-bottom: 22px;">
             <div style="font-size: 13px; font-weight: 700; color: #16243a; margin-bottom: 10px;">¿En qué podemos ayudarle? *</div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="rg-form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
               <sc-for list="{{ motivos }}" as="m" hint-placeholder-count="4">
                 <button type="button" onClick="{{ m.onClick }}" style="{{ m.estilo }}">
                   <span style="display: flex; align-items: center; gap: 10px;">{{ m.icono }}<span>{{ m.label }}</span></span>
@@ -90,7 +93,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="rg-form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
             <label style="display: flex; flex-direction: column; gap: 7px;">
               <span style="font-size: 13px; font-weight: 700; color: #16243a;">Nombre completo *</span>
               <input type="text" placeholder="Su nombre" style="border: 1px solid #d6dce5; border-radius: 8px; padding: 13px 14px; font-size: 15px; color: #1c2536; background: #fbfcfd; transition: all .2s;">
@@ -148,7 +151,7 @@
 
 <footer style="background: #0f1a2b; color: #8b99ad;">
   <div style="max-width: 1240px; margin: 0 auto; padding: 56px 32px 40px;">
-    <div style="display: flex; justify-content: space-between; align-items: start; gap: 48px; flex-wrap: wrap;">
+    <div class="cw-footer-inner" style="display: flex; justify-content: space-between; align-items: start; gap: 48px; flex-wrap: wrap;">
       <div>
         <img src="assets/corca-logo-white.png" alt="CORCA" style="height: 28px; display: block;">
         <p style="font-size: 14px; line-height: 1.6; max-width: 320px; margin: 18px 0 0;">Corporación Caraliant, S.A. — Manufactura, comercialización y distribución de productos de consumo masivo en Guatemala.</p>
@@ -169,7 +172,7 @@
         </div>
       </nav>
     </div>
-    <div style="border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; padding-top: 22px; font-size: 13px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+    <div class="cw-footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; padding-top: 22px; font-size: 13px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
       <div>© 2026 Corporación Caraliant, S.A. Todos los derechos reservados.</div>
       <div>Producimos calidad. Distribuimos confianza. Construimos marcas.</div>
     </div>
