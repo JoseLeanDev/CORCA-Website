@@ -239,3 +239,87 @@
     padding-right: 16px !important;
   }
 }
+
+/* ── Sabrocronchi product carousel ───────────────── */
+.cw-brand-carousel { min-width: 0; }
+.cw-brand-carousel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.cw-brand-carousel-controls { display: flex; gap: 8px; }
+.cw-brand-carousel-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid #d6dce5;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #16243a;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.cw-brand-carousel-button:hover {
+  border-color: #16243a;
+  background: #16243a;
+  color: #ffffff;
+}
+.cw-brand-carousel-button:focus-visible {
+  outline: 3px solid rgba(176, 127, 36, .45);
+  outline-offset: 2px;
+}
+.cw-brand-carousel-hint { display: none; }
+.cw-brand-carousel-viewport {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #c5ccd7 transparent;
+}
+.cw-brand-carousel-track {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 6px;
+}
+.cw-brand-carousel-slide {
+  flex: 0 0 calc((100% - 32px) / 3);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+.cw-brand-carousel-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid #e4e8ee;
+  border-radius: 12px;
+  background: #fbfcfd;
+}
+.cw-brand-carousel-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .cw-brand-carousel-slide { flex-basis: min(82%, 280px); }
+  .cw-brand-carousel-hint {
+    display: block;
+    margin: -7px 0 12px;
+    color: #7d8798;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cw-brand-carousel-button { width: 36px; height: 36px; }
+}
