@@ -291,7 +291,7 @@
   padding-bottom: 6px;
 }
 .cw-brand-carousel-slide {
-  flex: 0 0 calc((100% - 32px) / 3);
+  flex: 0 0 calc((100% - 48px) / 4);
   min-width: 0;
   scroll-snap-align: start;
 }
