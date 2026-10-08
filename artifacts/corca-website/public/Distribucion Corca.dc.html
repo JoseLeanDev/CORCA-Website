@@ -118,7 +118,7 @@
         </div>
          <div style="padding: 34px;">
            <sc-if value="{{ m.carrusel }}">
-             <div id="sabrocronchis-carousel" class="cw-brand-carousel">
+              <div id="{{ m.carouselId }}" class="cw-brand-carousel">
                <div class="cw-brand-carousel-head">
                  <div style="font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #8b95a6; font-weight: 700;">Productos</div>
                  <div class="cw-brand-carousel-controls">
@@ -127,7 +127,7 @@
                  </div>
                </div>
                <div class="cw-brand-carousel-hint">Desliza para ver todos los productos</div>
-               <div class="cw-brand-carousel-viewport" role="region" aria-label="Productos de Sabrocronchi’s" tabindex="0">
+                <div class="cw-brand-carousel-viewport" role="region" aria-label="Productos de {{ m.nombre }}" tabindex="0">
                  <div class="cw-brand-carousel-track">
                    <sc-for list="{{ m.productos }}" as="p" hint-placeholder-count="5">
                      <div class="cw-brand-carousel-slide">
@@ -258,8 +258,9 @@
 <script type="text/x-dc" data-dc-script data-props="{}">
 class Component extends DCLogic {
   state = { t: 1 };
-  scrollSabroCarousel(direction) {
-    const viewport = document.querySelector('#sabrocronchis-carousel .cw-brand-carousel-viewport');
+  scrollBrandCarousel(carouselId, direction) {
+    const carousel = document.getElementById(carouselId);
+    const viewport = carousel && carousel.querySelector('.cw-brand-carousel-viewport');
     const track = viewport && viewport.querySelector('.cw-brand-carousel-track');
     const slide = track && track.querySelector('.cw-brand-carousel-slide');
     if (!viewport || !track || !slide) return;
@@ -315,8 +316,8 @@ class Component extends DCLogic {
         { nombre: 'Olimpia', categoria: 'Consumo masivo', src: res('brand-olimpia', 'assets/brand-olimpia.png'), texto: 'Marca representada dentro de nuestro portafolio de distribución nacional.', showGrid: true, productos: [1, 2].map((n) => ({ slot: 'olimpia-prod-' + n, nombre: 'Producto ' + n, placeholder: 'Foto producto ' + n, img: n === 1 ? 'assets/slot-olimpia-prod-1.webp' : 'assets/slot-olimpia-prod-2.webp', vacio: false })) },
         { nombre: 'Tronix', categoria: 'Consumo masivo', src: res('brand-tronix', 'assets/brand-tronix.jpg'), texto: 'Rotación constante en el canal tradicional y presencia en punto de venta.', showGrid: true, productos: [1, 2, 3, 4].map((n) => ({ slot: 'tronix-prod-' + n, nombre: 'Producto ' + n, placeholder: 'Foto producto ' + n, img: 'assets/slot-tronix-prod-' + n + '.webp', vacio: false })) },
         { nombre: '¡YaEstá!', categoria: 'Consumo masivo', src: res('brand-yaesta', 'assets/brand-yaesta.png'), texto: 'Propuesta de valor accesible para el consumidor guatemalteco.', showGrid: true, productos: [1, 2, 3, 4].map((n) => ({ slot: 'yaesta-prod-' + n, nombre: 'Producto ' + n, placeholder: 'Foto producto ' + n, img: 'assets/slot-yaesta-prod-' + n + '.webp', vacio: false })) },
-        { nombre: 'Sabrocronchi’s', categoria: 'CONSUMO MASIVO', src: res('brand-sabrocronchis', 'assets/brand-sabrocronchis.png'), texto: 'Disponibles en presentación de 40g.', carrusel: true, carouselPrev: () => this.scrollSabroCarousel(-1), carouselNext: () => this.scrollSabroCarousel(1), productos: [1, 2, 3, 4, 5].map((n) => ({ nombre: 'Presentación ' + n, img: 'assets/sabrocronchis-prod-' + n + '.webp' })) },
-         { nombre: 'Mundi Globales', categoria: 'MARCA REPRESENTADA', src: res('brand-mundi-globales', 'assets/brand-mundi-globales.png'), texto: 'Información y productos próximamente.', showGrid: true, productos: [1, 2, 3, 4].map((n) => ({ slot: 'mundi-globales-prod-' + n, nombre: 'Producto ' + n, placeholder: 'Foto producto ' + n, vacio: true })) },
+         { nombre: 'Sabrocronchi’s', categoria: 'CONSUMO MASIVO', src: res('brand-sabrocronchis', 'assets/brand-sabrocronchis.png'), texto: 'Disponibles en presentación de 40g.', carrusel: true, carouselId: 'sabrocronchis-carousel', carouselPrev: () => this.scrollBrandCarousel('sabrocronchis-carousel', -1), carouselNext: () => this.scrollBrandCarousel('sabrocronchis-carousel', 1), productos: [1, 2, 3, 4, 5].map((n) => ({ nombre: 'Presentación ' + n, img: 'assets/sabrocronchis-prod-' + n + '.webp' })) },
+         { nombre: 'Mundi Globales', categoria: 'CONSUMO MASIVO', src: res('brand-mundi-globales', 'assets/brand-mundi-globales.png'), texto: 'Variedad de dulces y gomitas.', carrusel: true, carouselId: 'mundi-globales-carousel', carouselPrev: () => this.scrollBrandCarousel('mundi-globales-carousel', -1), carouselNext: () => this.scrollBrandCarousel('mundi-globales-carousel', 1), productos: ['Moras', 'Aros ácidos surtidos', 'Culebritas frutales', 'Sticks frutilla ácida colorida', 'Cinta frutilla ácida colorida', 'Ositos', 'Tajadas sandía ácida', 'Tiburón frambuesa', 'Sticks frutilla ácida unicornio', 'Sticks frutilla ácida', 'Cinta blueberry ácida', 'Serpientes', 'Reloj', 'Delfín', 'Cocodrilo', 'Cepillo de dientes', 'Sandía azul'].map((nombre, i) => ({ nombre, img: 'assets/mundi-globales-prod-' + (i + 1) + '.webp' })) },
       ],
       pasos: [
         { n: '01', titulo: 'Apertura de cuenta', texto: 'Registramos su negocio y asignamos un asesor de ventas.', icono: gold(P.persona, 26) },
