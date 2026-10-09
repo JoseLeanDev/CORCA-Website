@@ -15,6 +15,9 @@
 <meta name="ext-resource-dependency" content="assets/brand-olimpia.png" data-resource-id="brand-olimpia">
 <meta name="ext-resource-dependency" content="assets/brand-tronix.jpg" data-resource-id="brand-tronix">
 <meta name="ext-resource-dependency" content="assets/brand-yaesta.png" data-resource-id="brand-yaesta">
+<meta name="ext-resource-dependency" content="assets/brand-sabrocronchis.png" data-resource-id="brand-sabrocronchis">
+<meta name="ext-resource-dependency" content="assets/brand-mundi-globales.png" data-resource-id="brand-mundi-globales">
+<meta name="ext-resource-dependency" content="assets/brand-padova.png" data-resource-id="brand-padova">
 <meta name="ext-resource-dependency" content="assets/brand-changcheng.png" data-resource-id="brand-changcheng">
 <style>
   html { scroll-behavior: smooth; }
@@ -158,9 +161,9 @@
       </div>
     </div>
     <div data-reveal="" style="transition: opacity .7s ease, transform .7s ease; background: #ffffff; border: 1px solid #e4e8ee; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-      <div style="background: linear-gradient(150deg, #1d3050, #27405f); aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; padding: 32px;">
+      <div style="background: linear-gradient(150deg, #1d3050, #27405f); display: flex; align-items: center; justify-content: center; padding: 32px;">
         <div style="display: grid; gap: 14px; width: 100%; max-width: 240px;">
-          <sc-for list="{{ marcas }}" as="marca" hint-placeholder-count="3">
+          <sc-for list="{{ marcas }}" as="marca" hint-placeholder-count="6">
             <div style="background: #ffffff; border-radius: 10px; height: 68px; display: flex; align-items: center; justify-content: center; padding: 12px;">
               <img src="{{ marca.src }}" alt="{{ marca.nombre }}" style="max-width: 100%; max-height: 44px; object-fit: contain; display: block;">
             </div>
@@ -260,6 +263,9 @@ class Component extends DCLogic {
         { nombre: 'Olimpia', src: res('brand-olimpia', 'assets/brand-olimpia.png') },
         { nombre: 'Tronix', src: res('brand-tronix', 'assets/brand-tronix.jpg') },
         { nombre: '¡YaEstá!', src: res('brand-yaesta', 'assets/brand-yaesta.png') },
+        { nombre: 'Sabrocronchi’s', src: res('brand-sabrocronchis', 'assets/brand-sabrocronchis.png') },
+        { nombre: 'Mundi Globales', src: res('brand-mundi-globales', 'assets/brand-mundi-globales.png') },
+        { nombre: 'Padova', src: res('brand-padova', 'assets/brand-padova.png') },
       ],
     };
   }

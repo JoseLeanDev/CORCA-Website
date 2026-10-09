@@ -12,12 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
-<meta name="ext-resource-dependency" content="assets/brand-olimpia.png" data-resource-id="brand-olimpia">
-<meta name="ext-resource-dependency" content="assets/brand-tronix.jpg" data-resource-id="brand-tronix">
-<meta name="ext-resource-dependency" content="assets/brand-yaesta.png" data-resource-id="brand-yaesta">
-<meta name="ext-resource-dependency" content="assets/brand-sabrocronchis.png" data-resource-id="brand-sabrocronchis">
-<meta name="ext-resource-dependency" content="assets/brand-mundi-globales.png" data-resource-id="brand-mundi-globales">
-<meta name="ext-resource-dependency" content="assets/brand-padova.png" data-resource-id="brand-padova">
+<meta name="ext-resource-dependency" content="assets/brand-changcheng.png" data-resource-id="brand-changcheng">
 <meta name="ext-resource-dependency" content="assets/prod-changcheng-norm.png" data-resource-id="prod-changcheng">
 <meta name="ext-resource-dependency" content="assets/prod-muraya-con-soya-norm.png" data-resource-id="prod-muraya-con-soya">
 <meta name="ext-resource-dependency" content="assets/prod-muraya-sin-soya-norm.png" data-resource-id="prod-muraya-sin-soya">
@@ -139,13 +134,11 @@
         </sc-for>
       </div>
     </div>
-    <div data-reveal="" style="transition: opacity .7s ease, transform .7s ease; display: flex; justify-content: center; min-width: 0;">
-      <div role="list" aria-label="Marcas representadas en Distribución" style="display: grid; gap: 12px; max-width: 380px; width: 100%;">
-        <sc-for list="{{ marcasDistribucion }}" as="marca" hint-placeholder-count="6">
-          <div role="listitem" style="height: 68px; padding: 9px 18px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; background: #ffffff; border: 1px solid rgba(255,255,255,0.6); border-radius: 12px; box-shadow: 0 12px 24px -20px rgba(0,0,0,0.6);">
-            <img src="{{ marca.logo }}" alt="{{ marca.nombre }}" loading="lazy" style="display: block; width: 100%; height: 100%; max-width: 190px; max-height: 50px; object-fit: contain;">
-          </div>
-        </sc-for>
+    <div data-reveal="" style="transition: opacity .7s ease, transform .7s ease; display: flex; justify-content: center;">
+      <div style="background: #ffffff; border-radius: 18px; padding: 32px; box-shadow: 0 30px 60px -22px rgba(0,0,0,0.6); max-width: 380px; width: 100%;">
+        <img src="assets/brand-changcheng.png" alt="Chang Cheng Chao Mein" style="width: 100%; border-radius: 10px; display: block;">
+        <div style="margin-top: 20px; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: #16243a;">Chang Cheng</div>
+        <div style="font-size: 14.5px; color: #556072; margin-top: 4px;">Fideo oriental tipo Chao Mein · Marca propia CORCA</div>
       </div>
     </div>
   </div>
@@ -345,14 +338,6 @@ class Component extends DCLogic {
         { texto: 'Formulación adaptada al gusto local', icono: gold(P.chef, 20) },
         { texto: 'Presentaciones para tienda y mayorista', icono: gold(P.caja, 20) },
         { texto: 'Distribución propia en 14 departamentos', icono: gold(P.camion, 20) },
-      ],
-      marcasDistribucion: [
-        { nombre: 'Olimpia', logo: 'assets/brand-olimpia.png' },
-        { nombre: 'Tronix', logo: 'assets/brand-tronix.jpg' },
-        { nombre: '¡YaEstá!', logo: 'assets/brand-yaesta.png' },
-        { nombre: 'Sabrocronchi’s', logo: 'assets/brand-sabrocronchis.png' },
-        { nombre: 'Mundi Globales', logo: 'assets/brand-mundi-globales.png' },
-        { nombre: 'Padova', logo: 'assets/brand-padova.png' },
       ],
       maquila: [
         { titulo: 'Bajo su especificación', texto: 'Producimos con la fórmula y el formato que su marca requiere.', icono: bronze(P.lupa, 26) },
