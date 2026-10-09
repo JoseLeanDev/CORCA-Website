@@ -1,0 +1,23 @@
+1. Crítico: técnico y SEO
+
+El contenido clave depende de JavaScript. Al leer el HTML, las cifras, servicios, línea de tiempo, logos de marcas, valores y datos de contacto aparecen como {{ statVisitas }}, {{ hito.titulo }} y similares. En un navegador probablemente se ven bien, pero Google, WhatsApp y LinkedIn pueden leer los marcadores vacíos. Conviene pre-renderizar ese contenido o escribirlo directo en el HTML. También vale la pena confirmar que se ve bien en celulares lentos.
+Las URLs no están listas para producción. Nombres como Quienes Somos Corca.dc.html o Homepage Corca v2.dc.html tienen espacios y "v2". Recomiendo /quienes-somos, /manufactura, etc.
+La navegación es inconsistente. El logo de las subpáginas lleva a "Homepage v2" y no a la raíz. En el inicio, "Sea nuestro distribuidor" apunta a #contacto, cuando existe una página de contacto aparte.
+El dominio. El correo usa corcagt.co, pero el sitio está en replit.app. Hay que publicarlo en el dominio propio.
+Faltan meta description e imagen para compartir (Open Graph). Varias imágenes no tienen texto alternativo, incluida la del hero. El mapa es un GIF, lo que lo hace pesado; es mejor usar SVG o WebP.
+
+2. Conversión
+
+Agregar teléfono y WhatsApp visibles, idealmente con un botón flotante. Para tenderos y distribuidores en Guatemala, WhatsApp es el canal principal, y hoy solo aparece un correo.
+Separar las rutas por audiencia desde el hero. Por ejemplo: "Quiero abastecer mi tienda", "Quiero distribuir", "Busco maquila" y "Trabajar en CORCA". El formulario ya contempla estos casos, pero el inicio no los aprovecha.
+Verificar que el formulario realmente envíe y que alguien pueda cumplir la promesa de respuesta en 24 horas.
+
+3. Contenido y confianza
+
+El titular es demasiado estrecho. "Producimos Chao Mein de calidad" deja fuera la distribución de otras marcas. Además, no coincide con el tagline del pie ("Producimos calidad"). Sugiero unificar el mensaje.
+Hace falta prueba social: logos de marcas distribuidas y de clientes de maquila (con permiso), certificaciones como BPM o registro sanitario, y fotos reales de la planta, la flota y el equipo en lugar de imágenes genéricas.
+Falta un catálogo de productos. Solo se muestra Chang Cheng. Convendría incluir presentaciones, formatos y dónde comprarlos.
+La exportación a EE. UU. merece más peso, quizás con una sección o una landing en inglés para compradores e importadores.
+Falta una página de empleo. Contacto menciona "unirse al equipo", pero no hay a dónde ir.
+Faltan la política de privacidad y los términos, necesarios porque el formulario recoge datos personales.
+"Doce años" está escrito fijo en el texto. Es mejor calcularlo o decir "desde 2014" para que no quede desactualizado.

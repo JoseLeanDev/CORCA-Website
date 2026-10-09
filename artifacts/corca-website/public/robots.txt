@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_templates/
+Disallow: /prerender/
+Sitemap: https://corca-website.replit.app/sitemap.xml
