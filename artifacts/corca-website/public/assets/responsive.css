@@ -79,6 +79,10 @@
 
   /* Section padding */
   .rg-section-pad { padding: 56px 24px !important; }
+  .cw-process-section {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
 
   /* Contacto form field pairs */
   .rg-form-row {
@@ -139,6 +143,11 @@
     padding-top: 40px !important;
     padding-bottom: 36px !important;
   }
+  .cw-process-section {
+    padding: 56px 20px 60px !important;
+    background-position: 58% center !important;
+  }
+  .cw-process-grid { gap: 14px !important; }
 
   /* ── Product carousel ───────────────────────────── */
   /* JS calculates pixel-based transform; CSS just resizes cards to match. */
@@ -233,6 +242,11 @@
 
   /* Section padding */
   .rg-section-pad { padding: 36px 16px !important; }
+  .cw-process-section {
+    padding: 44px 16px 48px !important;
+    background-position: center !important;
+  }
+  .cw-process-grid { gap: 12px !important; }
 
   .rg-hero {
     padding-left: 16px !important;
