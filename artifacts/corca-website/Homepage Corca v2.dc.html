@@ -15,6 +15,9 @@
 <meta name="ext-resource-dependency" content="assets/brand-olimpia.png" data-resource-id="brand-olimpia">
 <meta name="ext-resource-dependency" content="assets/brand-tronix.jpg" data-resource-id="brand-tronix">
 <meta name="ext-resource-dependency" content="assets/brand-yaesta.png" data-resource-id="brand-yaesta">
+<meta name="ext-resource-dependency" content="assets/brand-sabrocronchis.png" data-resource-id="brand-sabrocronchis">
+<meta name="ext-resource-dependency" content="assets/brand-mundi-globales.png" data-resource-id="brand-mundi-globales">
+<meta name="ext-resource-dependency" content="assets/brand-padova.png" data-resource-id="brand-padova">
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; background: #f6f7f9; color: #1c2536; font-family: 'Archivo', sans-serif; -webkit-font-smoothing: antialiased; }
@@ -102,7 +105,7 @@
 <!-- MARQUEE DE MARCAS -->
 <div style="background: #ffffff; border-bottom: 1px solid #e4e8ee; overflow: hidden; padding: 22px 0;">
   <div style="display: flex; width: max-content; align-items: center; gap: 90px; animation: marquee 26s linear infinite;">
-    <sc-for list="{{ marcasMarquee }}" as="m" hint-placeholder-count="8">
+    <sc-for list="{{ marcasMarquee }}" as="m" hint-placeholder-count="18">
       <img src="{{ m.src }}" alt="{{ m.nombre }}" style="height: 44px; object-fit: contain; display: block; filter: grayscale(1); opacity: 0.55; transition: all .3s;" style-hover="filter: grayscale(0); opacity: 1;">
     </sc-for>
   </div>
@@ -187,12 +190,19 @@
     <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0 16px; color: #16243a;">Marcas que llegan a todo el país</h2>
     <p style="font-size: 16px; line-height: 1.7; color: #556072; margin: 0;">Red de motocicletas y vehículos tipo panel con presencia diaria en el comercio tradicional.</p>
   </div>
-  <div class="rg-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px;">
-    <sc-for list="{{ marcas }}" as="marca" hint-placeholder-count="3">
-      <div data-reveal="" style="transition: opacity .7s ease, transform .7s ease; background: #ffffff; border: 1px solid #e4e8ee; border-radius: 14px; height: 150px; display: flex; align-items: center; justify-content: center; padding: 28px;" style-hover="border-color: #16243a; box-shadow: 0 18px 40px -18px rgba(22,36,58,0.3); transform: translateY(-6px) scale(1.02);">
-        <img src="{{ marca.src }}" alt="{{ marca.nombre }}" style="max-width: 100%; max-height: 82px; object-fit: contain; display: block;">
+  <div class="cw-home-brand-viewport" role="region" aria-roledescription="carrusel automático" aria-label="Marcas representadas" tabindex="0" data-reveal="" style="transition: opacity .7s ease, transform .7s ease;">
+    <div class="cw-home-brand-track">
+      <div class="cw-home-brand-group" role="list" aria-label="Marcas">
+        <sc-for list="{{ marcas }}" as="marca" hint-placeholder-count="6">
+          <div class="cw-home-brand-card" role="listitem"><img src="{{ marca.src }}" alt="{{ marca.nombre }}"></div>
+        </sc-for>
       </div>
-    </sc-for>
+      <div class="cw-home-brand-group" aria-hidden="true">
+        <sc-for list="{{ marcas }}" as="marca" hint-placeholder-count="6">
+          <div class="cw-home-brand-card"><img src="{{ marca.src }}" alt=""></div>
+        </sc-for>
+      </div>
+    </div>
   </div>
   <!-- COBERTURA -->
   <div data-reveal="" class="rg-2" style="transition: opacity .7s ease, transform .7s ease; margin-top: 88px; background: #ffffff; border: 1px solid #e4e8ee; border-radius: 18px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;">
@@ -303,6 +313,9 @@ class Component extends DCLogic {
       { nombre: 'Olimpia', src: res('brand-olimpia', 'assets/brand-olimpia.png') },
       { nombre: 'Tronix', src: res('brand-tronix', 'assets/brand-tronix.jpg') },
       { nombre: '¡YaEstá!', src: res('brand-yaesta', 'assets/brand-yaesta.png') },
+      { nombre: 'Sabrocronchi’s', src: res('brand-sabrocronchis', 'assets/brand-sabrocronchis.png') },
+      { nombre: 'Mundi Globales', src: res('brand-mundi-globales', 'assets/brand-mundi-globales.png') },
+      { nombre: 'Padova', src: res('brand-padova', 'assets/brand-padova.png') },
     ];
     return {
       statsRef: (el) => { this._stats = el; },
