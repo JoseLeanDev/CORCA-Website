@@ -1,1 +1,2 @@
 - [CORCA Responsive Implementation](corca-responsive.md) — pitfalls, classes added, carousel JS fix, sticky sidebar fix, build command
+- [Distribution brand category](distribution-brand-category.md) — new mass-consumption brands use the consistent “CONSUMO MASIVO” label, not a generic placeholder

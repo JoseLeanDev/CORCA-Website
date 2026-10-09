@@ -17,6 +17,7 @@
 <meta name="ext-resource-dependency" content="assets/brand-yaesta.png" data-resource-id="brand-yaesta">
 <meta name="ext-resource-dependency" content="assets/brand-sabrocronchis.png" data-resource-id="brand-sabrocronchis">
 <meta name="ext-resource-dependency" content="assets/brand-mundi-globales.png" data-resource-id="brand-mundi-globales">
+<meta name="ext-resource-dependency" content="assets/brand-padova.png" data-resource-id="brand-padova">
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; background: #f6f7f9; color: #1c2536; font-family: 'Archivo', sans-serif; -webkit-font-smoothing: antialiased; }
@@ -318,6 +319,7 @@ class Component extends DCLogic {
         { nombre: '¡YaEstá!', categoria: 'Consumo masivo', src: res('brand-yaesta', 'assets/brand-yaesta.png'), texto: 'Propuesta de valor accesible para el consumidor guatemalteco.', showGrid: true, productos: [1, 2, 3, 4].map((n) => ({ slot: 'yaesta-prod-' + n, nombre: 'Producto ' + n, placeholder: 'Foto producto ' + n, img: 'assets/slot-yaesta-prod-' + n + '.webp', vacio: false })) },
          { nombre: 'Sabrocronchi’s', categoria: 'CONSUMO MASIVO', src: res('brand-sabrocronchis', 'assets/brand-sabrocronchis.png'), texto: 'Disponibles en presentación de 40g.', carrusel: true, carouselId: 'sabrocronchis-carousel', carouselPrev: () => this.scrollBrandCarousel('sabrocronchis-carousel', -1), carouselNext: () => this.scrollBrandCarousel('sabrocronchis-carousel', 1), productos: [1, 2, 3, 4, 5].map((n) => ({ nombre: 'Presentación ' + n, img: 'assets/sabrocronchis-prod-' + n + '.webp' })) },
          { nombre: 'Mundi Globales', categoria: 'CONSUMO MASIVO', src: res('brand-mundi-globales', 'assets/brand-mundi-globales.png'), texto: 'Variedad de dulces y gomitas.', carrusel: true, carouselId: 'mundi-globales-carousel', carouselPrev: () => this.scrollBrandCarousel('mundi-globales-carousel', -1), carouselNext: () => this.scrollBrandCarousel('mundi-globales-carousel', 1), productos: ['Moras', 'Aros ácidos surtidos', 'Culebritas frutales', 'Sticks frutilla ácida colorida', 'Cinta frutilla ácida colorida', 'Ositos', 'Tajadas sandía ácida', 'Tiburón frambuesa', 'Sticks frutilla ácida unicornio', 'Sticks frutilla ácida', 'Cinta blueberry ácida', 'Serpientes', 'Reloj', 'Delfín', 'Cocodrilo', 'Cepillo de dientes', 'Sandía azul'].map((nombre, i) => ({ nombre, img: 'assets/mundi-globales-prod-' + String(i + 1).padStart(2, '0') + '.webp' })) },
+         { nombre: 'Padova', categoria: 'CONSUMO MASIVO', src: res('brand-padova', 'assets/brand-padova.png'), texto: 'Productos de Padova próximamente.', showGrid: true, productos: [1, 2, 3, 4].map((n) => ({ slot: 'padova-prod-' + n, nombre: 'Producto ' + n, placeholder: 'Foto producto ' + n, vacio: true })) },
       ],
       pasos: [
         { n: '01', titulo: 'Apertura de cuenta', texto: 'Registramos su negocio y asignamos un asesor de ventas.', icono: gold(P.persona, 26) },
