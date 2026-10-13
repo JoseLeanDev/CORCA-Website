@@ -7,6 +7,7 @@
     "dev": "pnpm run seo:generate && vite --config vite.config.ts --host 0.0.0.0",
     "seo:generate": "node scripts/prerender.mjs",
     "test:seo": "node scripts/verify-seo.mjs",
+    "test:language": "node scripts/verify-language.mjs",
     "build": "pnpm run seo:generate && vite build --config vite.config.ts",
     "serve": "node scripts/serve.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit"

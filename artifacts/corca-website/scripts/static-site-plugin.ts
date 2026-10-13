@@ -3,7 +3,7 @@ import path from 'node:path';
 import { spawn } from 'node:child_process';
 import type { Plugin } from 'vite';
 // @ts-ignore Plain JS shared configuration.
-import { pages, legacyRoutes } from './site-pages.mjs';
+import { pages, localizedPages, legacyRoutes } from './site-pages.mjs';
 
 export function staticSitePlugin(root: string): Plugin {
   function middleware(req: any, res: any, next: () => void) {
@@ -12,10 +12,10 @@ export function staticSitePlugin(root: string): Plugin {
     const pathname = decodeURIComponent(url.pathname);
     const legacy = legacyRoutes[pathname];
     const normalized = pathname !== '/' ? pathname.replace(/\/$/, '') : '/';
-    if (legacy || (pathname !== normalized && pages.some((p: any) => p.route === normalized))) {
+    if (legacy || (pathname !== normalized && localizedPages.some((p: any) => p.route === normalized))) {
       res.writeHead(301, { Location: (legacy || normalized) + url.search }); res.end(); return;
     }
-    if (!pages.some((p: any) => p.route === pathname)) return next();
+    if (!localizedPages.some((p: any) => p.route === pathname)) return next();
     const file = path.join(root, 'public/prerender', pathname.slice(1), 'index.html');
     if (!existsSync(file)) {
       res.writeHead(503); res.end('Static pages missing. Run pnpm run seo:generate.'); return;
@@ -50,7 +50,9 @@ export function staticSitePlugin(root: string): Plugin {
       };
       server.watcher.on('change', file => {
         if (!pages.some((p: any) => path.join(root, p.source) === file)
-          && file !== path.join(root, 'assets/responsive.css')) return;
+          && file !== path.join(root, 'assets/responsive.css')
+          && file !== path.join(root, 'content/en.json')
+          && file !== path.join(root, 'public/assets/site-language.js')) return;
         clearTimeout(timer);
         timer = setTimeout(generate, 300);
       });

@@ -4,13 +4,15 @@ import { createServer } from 'node:http';
 import { readFile, writeFile, mkdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { pages, legacyRoutes, productionOrigin } from './site-pages.mjs';
+import { pages, localizedPages, englishRoutes, legacyRoutes, productionOrigin } from './site-pages.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const publicDir = path.join(root, 'public');
 const output = path.join(publicDir, 'prerender');
 await mkdir(output, { recursive: true });
 await mkdir(path.join(publicDir, '_templates'), { recursive: true });
+const translations = JSON.parse(await readFile(path.join(root, 'content/en.json'), 'utf8'));
+await writeFile(path.join(publicDir, 'assets/translations-en.json'), JSON.stringify(translations));
 
 // The original GIF is a map, not essential animation. Ship a small static WebP.
 // The opening GIF frame is blank; frame 100 contains the full coverage map.
@@ -54,7 +56,7 @@ try {
     await page.waitForSelector('#dc-root > .sc-host', { timeout: 60000 });
     // Resolve animated counters to their final values before serializing.
     await page.evaluate(() => window.__dcSetProps(window.__dcRootName(), { contadoresAnimados: false }));
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(pageInfo.route === '/distribucion' ? 2000 : 300);
     const snapshot = await page.evaluate(async ({ pageInfo, legacyRoutes, productionOrigin }) => {
       const host = document.querySelector('#dc-root > .sc-host');
       host.querySelectorAll('[data-reveal]').forEach(el => {
@@ -116,35 +118,52 @@ try {
     }, { pageInfo, legacyRoutes, productionOrigin });
     if (errors.length) throw new Error(`${pageInfo.route}: ${errors.join('; ')}`);
     const escape = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
-    const url = productionOrigin + pageInfo.route;
     const image = `${productionOrigin}/assets/corca-social.webp`;
+    for (const locale of ['es', 'en']) {
+    const current = localizedPages.find(item => item.esRoute === pageInfo.route && item.locale === locale);
+    const localizedContent = await page.evaluate(async ({ content, config, origin }) => {
+      const { localizeHost } = await import(`${origin}/assets/site-language.js`);
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = content;
+      localizeHost(wrapper, config);
+      return wrapper.innerHTML;
+    }, {
+      content: snapshot.content, origin,
+      config: { locale, esRoute: pageInfo.route, enRoute: pageInfo.enRoute, routes: englishRoutes, dictionary: translations },
+    });
+    const url = productionOrigin + current.route;
     const html = `<!doctype html>
-<html lang="es"><head>
+<html lang="${locale}"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${escape(pageInfo.title)}</title>
-<meta name="description" content="${escape(pageInfo.description)}">
+<title>${escape(current.title)}</title>
+<meta name="description" content="${escape(current.description)}">
 <link rel="icon" type="image/png" href="/assets/corca-logo-navy.png">
 <link rel="canonical" href="${url}">
-<meta property="og:type" content="website"><meta property="og:locale" content="es_GT">
+<link rel="alternate" hreflang="es" href="${productionOrigin}${pageInfo.route}">
+<link rel="alternate" hreflang="en" href="${productionOrigin}${pageInfo.enRoute}">
+<link rel="alternate" hreflang="x-default" href="${productionOrigin}${pageInfo.route}">
+<meta property="og:type" content="website"><meta property="og:locale" content="${locale === 'en' ? 'en_US' : 'es_GT'}">
 <meta property="og:site_name" content="CORCA">
-<meta property="og:title" content="${escape(pageInfo.title)}">
-<meta property="og:description" content="${escape(pageInfo.description)}">
+<meta property="og:title" content="${escape(current.title)}">
+<meta property="og:description" content="${escape(current.description)}">
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${image}">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="CORCA — Corporación Caraliant, S.A.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${escape(pageInfo.title)}">
-<meta name="twitter:description" content="${escape(pageInfo.description)}">
+<meta name="twitter:title" content="${escape(current.title)}">
+<meta name="twitter:description" content="${escape(current.description)}">
 <meta name="twitter:image" content="${image}">
 ${snapshot.styles}
+<link rel="stylesheet" href="/assets/language-switch.css">
 <style>#corca-static{height:auto}body.corca-booting>#dc-root{display:none} [data-reveal]{opacity:1!important}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*{animation-duration:.01ms!important;animation-iteration-count:1!important}}</style>
-<script defer src="/assets/site-boot.js" data-template="/_templates/${encodeURIComponent(pageInfo.source)}"></script>
-</head><body><div id="corca-static">${snapshot.content}</div></body></html>`;
-    const folder = path.join(output, pageInfo.route === '/' ? '' : pageInfo.route.slice(1));
+<script defer src="/assets/site-boot.js" data-template="/_templates/${encodeURIComponent(pageInfo.source)}" data-locale="${locale}" data-es-route="${pageInfo.route}" data-en-route="${pageInfo.enRoute}" data-title="${escape(current.title)}" data-routes="${escape(JSON.stringify(englishRoutes))}"></script>
+</head><body><div id="corca-static">${localizedContent}</div></body></html>`;
+    const folder = path.join(output, current.route === '/' ? '' : current.route.slice(1));
     await mkdir(folder, { recursive: true });
     await writeFile(path.join(folder, 'index.html'), html);
+    }
     // Keep editable source intact, normalize URLs only in its runtime copy.
     let template = await readFile(path.join(root, pageInfo.source), 'utf8');
     for (const [legacy, route] of Object.entries(legacyRoutes)) template = template.replaceAll(legacy.slice(1), route);
@@ -180,7 +199,7 @@ ${snapshot.styles}
     await page.close();
   }
   await writeFile(path.join(publicDir, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /_templates/\nDisallow: /prerender/\nSitemap: ${productionOrigin}/sitemap.xml\n`);
-  await writeFile(path.join(publicDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(p => `<url><loc>${productionOrigin}${p.route}</loc></url>`).join('')}</urlset>\n`);
+  await writeFile(path.join(publicDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${localizedPages.map(p => `<url><loc>${productionOrigin}${p.route}</loc><xhtml:link rel="alternate" hreflang="es" href="${productionOrigin}${p.esRoute}"/><xhtml:link rel="alternate" hreflang="en" href="${productionOrigin}${p.enRoute}"/></url>`).join('')}</urlset>\n`);
   console.log(`Map WebP: ${(await stat(path.join(publicDir, 'assets/mapa-guatemala.webp'))).size} bytes`);
 } finally {
   await browser?.close();

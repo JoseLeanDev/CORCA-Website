@@ -2,7 +2,7 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { gzipSync } from 'node:zlib';
 import path from 'node:path';
-import { pages, legacyRoutes } from './site-pages.mjs';
+import { localizedPages, legacyRoutes } from './site-pages.mjs';
 
 const root = path.resolve(import.meta.dirname, '../dist/public');
 const port = Number(process.env.PORT);
@@ -24,11 +24,11 @@ createServer(async (req, res) => {
     const pathname = decodeURIComponent(url.pathname);
     const normalized = pathname !== '/' ? pathname.replace(/\/$/, '') : '/';
     const redirect = legacyRoutes[pathname] ||
-      (pathname !== normalized && pages.some(p => p.route === normalized) ? normalized : null);
+      (pathname !== normalized && localizedPages.some(p => p.route === normalized) ? normalized : null);
     if (redirect) {
       res.writeHead(301, { Location: redirect + url.search }); res.end(); return;
     }
-    const page = pages.find(p => p.route === pathname);
+    const page = localizedPages.find(p => p.route === pathname);
     const file = path.resolve(root, page ? (pathname === '/' ? 'index.html' : `${pathname.slice(1)}/index.html`) : pathname.slice(1));
     if (!file.startsWith(`${root}/`) || !(await stat(file)).isFile()) throw new Error('Not found');
     let data = await readFile(file);
@@ -45,7 +45,9 @@ createServer(async (req, res) => {
     headers['Content-Length'] = data.length;
     res.writeHead(200, headers); res.end(req.method === 'HEAD' ? undefined : data);
   } catch {
+    const english = /^\/en(?:\/|$|\?)/.test(req.url);
+    const title = english ? 'Page not found' : 'Página no encontrada';
     res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end('<!doctype html><html lang="es"><title>Página no encontrada | CORCA</title><h1>Página no encontrada</h1><a href="/">Ir al inicio</a></html>');
+    res.end(`<!doctype html><html lang="${english ? 'en' : 'es'}"><title>${title} | CORCA</title><h1>${title}</h1><a href="${english ? '/en' : '/'}">${english ? 'Go to home' : 'Ir al inicio'}</a></html>`);
   }
 }).listen(port, '0.0.0.0', () => console.log(`CORCA static HTML server listening on ${port}`));
