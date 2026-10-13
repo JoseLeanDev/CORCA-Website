@@ -36,6 +36,19 @@ export function localizeHost(host, config) {
   const header = host.querySelector('.cw-header');
   const menu = header?.querySelector('.cw-menu-toggle');
   if (menu) menu.setAttribute('aria-label', locale === 'en' ? 'Open menu' : 'Abrir menú');
+  const navigation = header?.querySelector('.cw-nav');
+  const contactButton = header?.querySelector('.cw-cta-btn');
+  if (navigation && contactButton) {
+    for (const link of navigation.querySelectorAll('a')) {
+      if (['Contacto', 'Contact'].includes(link.textContent.trim())) link.remove();
+    }
+    // The desktop CTA is hidden on phones; keep one contact action in the drawer.
+    if (!navigation.querySelector('.cw-contact-mobile')) {
+      const mobileContact = contactButton.cloneNode(true);
+      mobileContact.className = 'cw-contact-mobile';
+      navigation.appendChild(mobileContact);
+    }
+  }
   if (header && !header.querySelector('.cw-language-switch')) {
     const selector = document.createElement('div');
     selector.className = 'cw-language-switch';
@@ -54,6 +67,6 @@ export function localizeHost(host, config) {
       if (lang === locale) link.setAttribute('aria-current', 'true');
       selector.appendChild(link);
     }
-    header.insertBefore(selector, menu || null);
+    header.appendChild(selector);
   }
 }

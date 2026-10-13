@@ -44,6 +44,17 @@ try {
       await page.goto(origin + info.route, { waitUntil: 'domcontentloaded' });
       const selector = page.locator('.cw-language-switch');
       assert(await selector.isVisible(), 'Language switch hidden');
+      assert.equal(await page.locator('header .cw-nav a').filter({ hasText: /^(Contacto|Contact)$/ }).count(), 0, 'Redundant contact link');
+      if (width === 1440) {
+        const action = await page.locator('header .cw-cta-btn').boundingBox();
+        const switchBox = await selector.boundingBox();
+        assert(switchBox.x >= action.x + action.width, 'Language switch is not after the contact button');
+        assert(switchBox.x - action.x - action.width <= 32, 'Language switch is too far from contact button');
+      } else {
+        await page.locator('.cw-menu-toggle').click();
+        assert(await page.locator('.cw-contact-mobile').isVisible(), 'Mobile contact action missing');
+        await page.locator('.cw-menu-toggle').click();
+      }
       assert.equal(await selector.locator('a[hreflang="es"]').getAttribute('href'), info.esRoute);
       assert.equal(await selector.locator('a[hreflang="en"]').getAttribute('href'), info.enRoute);
       assert.equal(await selector.locator('a[aria-current="true"]').getAttribute('lang'), info.locale);
