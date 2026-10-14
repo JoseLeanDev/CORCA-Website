@@ -1,45 +1,27 @@
-# [Project name]
+# CORCA
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Sitio corporativo estático bilingüe de Corporación Caraliant, S.A.: manufactura, distribución y marcas de consumo masivo.
 
-## Run & Operate
+## Arquitectura y alcance
+- La web del cliente es HTML, CSS y JavaScript estándar, sin React, Babel, Vite, Express, API o base de datos.
+- `artifacts/corca-website/site/` contiene las diez páginas HTML editables y sus recursos definitivos. No hay generación, hidratación ni runtime de traducción.
+- `artifacts/corca-website/server.mjs` utiliza únicamente módulos nativos de Node.js para servir archivos, aplicar redirecciones y devolver 404 reales.
+- El API inicial era scaffolding de ejemplo: su servicio fue retirado y no debe reintroducirse.
+- `artifacts/mockup-sandbox/` es el Canvas de diseño separado, no parte de la entrega ni del despliegue de CORCA. Su tooling React/Vite pertenece únicamente a esa herramienta.
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+## Operación
+- Vista previa y producción: `node artifacts/corca-website/server.mjs`, con `PORT` suministrado por el servicio. Fuera de Replit el puerto por defecto es 3000.
+- Verificación rápida: `node artifacts/corca-website/scripts/check-static.mjs`.
+- Pruebas de navegador del workspace: `pnpm test:browser`; usan Chromium del sistema y Playwright como herramienta de prueba, nunca como dependencia del sitio.
+- Instrucciones de entrega: `artifacts/corca-website/README.md`.
+- No requiere instalar paquetes ni compilar para arrancar la web. El comando de build solo valida los archivos existentes.
 
-## Stack
+## Contenido y SEO
+- Mantener ambos idiomas completos en HTML; al cambiar textos, actualizar también inglés, alt y metadatos.
+- Rutas: `/`, `/quienes-somos`, `/manufactura`, `/distribucion`, `/contacto`; equivalentes inglesas en `/en`.
+- Conservar canonical, hreflang, Open Graph/Twitter, robots/sitemap y las redirecciones históricas de `routes.mjs`.
+- No convertir todas las rutas en un rewrite al inicio ni volver a introducir marcadores sin resolver.
+- Mantener diseño aprobado, carouseles, seis marcas y todas las imágenes de productos.
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
-
-## Where things live
-
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
-
-## Architecture decisions
-
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
-
-## Product
-
-_Describe the high-level user-facing capabilities of this app once they exist._
-
-## User preferences
-
-_Populate as you build — explicit user instructions worth remembering across sessions._
-
-## Gotchas
-
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+## Contacto
+El formulario no envía ni almacena mensajes todavía; no simular recepción. El hosting del cliente admite Node.js y también maneja su correo. Cuando se pida implementar el envío, utilizar su SMTP/relay interno, sin un proveedor externo adicional y sin credenciales en los archivos.

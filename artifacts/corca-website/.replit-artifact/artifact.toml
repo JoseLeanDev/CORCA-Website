@@ -1,7 +1,7 @@
 kind = "web"
 previewPath = "/"
 title = "CORCA Website"
-description = "The CORCA corporate website installed from the supplied static export, preserving its original pages, copy, imagery, and visual design."
+description = "Sitio estático bilingüe en HTML, CSS y JavaScript estándar, servido por Node.js sin frameworks ni dependencias de producción."
 version = "1.0.0"
 id = "artifacts/corca-website"
 router = "path"
@@ -12,11 +12,11 @@ paths = [ "/" ]
 localPort = 23517
 
 [services.development]
-run = "pnpm --filter @workspace/corca-website run dev"
+run = "node server.mjs"
 
 [services.production]
-build = [ "pnpm", "--filter", "@workspace/corca-website", "run", "build" ]
-run = [ "pnpm", "--filter", "@workspace/corca-website", "run", "serve" ]
+build = [ "node", "scripts/check-static.mjs" ]
+run = [ "node", "server.mjs" ]
 
 [services.env]
 PORT = "23517"

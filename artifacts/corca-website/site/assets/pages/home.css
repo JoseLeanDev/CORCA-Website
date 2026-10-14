@@ -1,0 +1,113 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #f6f7f9;
+  color: #1c2536;
+  font-family: "Archivo", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: #2e5e8f;
+  text-decoration: none;
+}
+a:hover {
+  color: #16243a;
+}
+* {
+  box-sizing: border-box;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes dotsDrift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -400px;
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.06);
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.scp0:hover {
+  color: rgb(22, 36, 58) !important;
+  border-bottom: 2px solid rgb(224, 168, 63) !important;
+}
+.scp1:hover {
+  background: rgb(46, 65, 101) !important;
+  color: rgb(255, 255, 255) !important;
+  transform: translateY(-2px) !important;
+}
+.scp2:hover {
+  background: rgb(237, 187, 92) !important;
+  color: rgb(22, 36, 58) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: rgba(224, 168, 63, 0.5) 0px 14px 28px -10px !important;
+}
+.scp3:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgb(255, 255, 255) !important;
+  transform: translateY(-3px) !important;
+}
+.scp4:hover {
+  filter: grayscale(0) !important;
+  opacity: 1 !important;
+}
+.scp5:hover {
+  border-color: rgb(22, 36, 58) !important;
+  box-shadow: rgba(22, 36, 58, 0.3) 0px 18px 40px -18px !important;
+  transform: translateY(-6px) !important;
+}
+.scp6:hover {
+  color: rgb(176, 127, 36) !important;
+  gap: 14px !important;
+}
+.scp7:hover {
+  background: rgb(22, 36, 58) !important;
+  color: rgb(255, 255, 255) !important;
+  border-color: rgb(22, 36, 58) !important;
+}
+.scp8:hover {
+  border-color: rgb(224, 168, 63) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: rgba(22, 36, 58, 0.25) 0px 14px 30px -16px !important;
+}
+.scp9:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: rgba(22, 36, 58, 0.6) 0px 24px 50px -20px !important;
+}
