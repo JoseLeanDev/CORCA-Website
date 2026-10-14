@@ -33,7 +33,7 @@ for (const [route, filename] of Object.entries(routes)) {
     }
   }
   for (const match of html.matchAll(/(?:src|href)="(\/assets\/[^"]+)"|url\((?:&quot;|["'])?(\/assets\/[^)"'&]+)(?:&quot;|["'])?\)/g)) {
-    assets.add((match[1] || match[2]).replaceAll('&amp;', '&'));
+    assets.add((match[1] || match[2]).replaceAll('&amp;', '&').split('?')[0]);
   }
   if (route.endsWith('contact') || route === '/contacto') {
     assert(html.includes('id="contact-form"') && html.includes('id="contact-status"'), 'Honest contact form status');

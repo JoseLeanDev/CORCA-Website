@@ -105,6 +105,21 @@
 /* ── MOBILE (≤ 768px) ───────────────────────────── */
 @media (max-width: 768px) {
 
+  /* Coverage: text and departments first, full-size map below. */
+  .cw-coverage {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 28px !important;
+    padding: 24px !important;
+  }
+  .cw-coverage > div { min-width: 0; }
+  .cw-coverage > div:last-child {
+    width: 100%;
+    max-width: 360px;
+    height: auto !important;
+    aspect-ratio: 1;
+    margin-inline: auto;
+  }
+
   /* ── Sticky sidebar → static when grid collapses ── */
   .cw-sticky-col {
     position: static !important;
