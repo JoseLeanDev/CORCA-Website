@@ -1,4 +1,4 @@
-- [Comandos de servicios](artifact-command-cwd.md) — los servicios administrados ejecutan comandos desde el directorio del artefacto, no desde la raíz.
+- [Comandos de servicios](artifact-command-cwd.md) — desarrollo ejecuta desde el artefacto; publicación desde la raíz. Confirmar el directorio en los registros.
 - [Pruebas sin JavaScript](browser-no-js-checks.md) — inspeccionar el DOM sin depender de callbacks programados dentro de la página.
 - [Distribution brand category](distribution-brand-category.md) — new mass-consumption brands use the consistent “CONSUMO MASIVO” label, not a generic placeholder
 - [Comunicación de la trayectoria](corca-history-messaging.md) — evitar centrar la historia en “40 motocicletas”; reflejar la operación logística e industrial completa.

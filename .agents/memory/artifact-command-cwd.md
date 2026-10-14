@@ -1,9 +1,9 @@
 ---
 name: Directorio de ejecución de los servicios
-description: Evitar rutas duplicadas al configurar comandos Node.js en artefactos.
+description: Distinguir el directorio efectivo de desarrollo y publicación al configurar comandos Node.js.
 ---
-Los comandos de un servicio administrado se ejecutan desde el directorio del artefacto. Las rutas de los manifiestos deben ser relativas a ese directorio; no repetir el prefijo de la raíz del workspace.
+En este proyecto, el servicio administrado de desarrollo ejecuta su comando desde el directorio del artefacto, pero la publicación ejecuta los comandos de producción desde la raíz del workspace. No asumir que ambos usan el mismo directorio.
 
-**Why:** Un comando válido desde la raíz falló en el servicio con MODULE_NOT_FOUND porque el directorio del artefacto se antepuso de nuevo.
+**Why:** En desarrollo, repetir el prefijo del artefacto produjo una ruta duplicada. En publicación, usar una ruta corta produjo MODULE_NOT_FOUND buscando el script en la raíz. Los registros confirmaron los dos directorios distintos.
 
-**How to apply:** Al cambiar comandos de desarrollo o producción, distinguir los comandos del manifiesto de los que se ejecutan manualmente desde la raíz. Si falla una ruta existente, comprobar el directorio efectivo en el error antes de crear un segundo servidor o cambiar de stack.
+**How to apply:** Mantener rutas relativas al artefacto en desarrollo y rutas desde la raíz en producción. Confirmar el directorio efectivo en los registros y probar tanto el comando de validación como el de arranque desde ese directorio antes de publicar. Si cambia la plataforma, confiar en los registros actuales.

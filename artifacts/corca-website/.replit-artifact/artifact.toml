@@ -15,8 +15,8 @@ localPort = 23517
 run = "node server.mjs"
 
 [services.production]
-build = [ "node", "scripts/check-static.mjs" ]
-run = [ "node", "server.mjs" ]
+build = [ "node", "artifacts/corca-website/scripts/check-static.mjs" ]
+run = [ "node", "artifacts/corca-website/server.mjs" ]
 
 [services.env]
 PORT = "23517"
