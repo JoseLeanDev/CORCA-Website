@@ -1,4 +1,5 @@
 - [CORCA Responsive Implementation](corca-responsive.md) — pitfalls, classes added, carousel JS fix, sticky sidebar fix, build command
 - [Distribution brand category](distribution-brand-category.md) — new mass-consumption brands use the consistent “CONSUMO MASIVO” label, not a generic placeholder
 - [Comunicación de la trayectoria](corca-history-messaging.md) — evitar centrar la historia en “40 motocicletas”; reflejar la operación logística e industrial completa.
-- [Contenido estático y SEO](corca-static-content.md) — conservar fuentes editables; servir HTML completo sin JS y mantener rutas y redirecciones iguales en producción.
+- [Contenido estático y SEO](corca-static-content.md) — HTML, CSS y JS sencillo sin frameworks; conservar diseño, idiomas, SEO y redirecciones.
+- [Hosting y correo](corca-hosting.md) — el proveedor del cliente admite Node.js y gestiona el correo; usar su servicio interno, sin proveedores adicionales.

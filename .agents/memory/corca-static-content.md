@@ -1,12 +1,12 @@
 ---
 name: CORCA content availability and SEO
-description: Preserve editable DC sources while publishing complete HTML and permanent redirects.
+description: Plain static HTML, preserved design and SEO, and bilingual content constraints.
 ---
-Keep the DC templates as the editable source, but serve generated, fully rendered HTML to visitors. Interactive runtime loading must never hide or delete that HTML until the replacement is ready.
+El sitio debe ser estático, con HTML editable, CSS y JavaScript sencillo. El usuario pidió eliminar React, Vite, Express y el API innecesario, manteniendo la página como está y las reglas de SEO y optimización. Esto sustituye la decisión anterior de conservar las plantillas DC como fuente obligatoria.
 
-**Why:** The client requested that stats, services, history, brands, values and contacts be available without JavaScript, including on slow mobile devices and to social crawlers. Preserve the existing design and carousel behavior rather than replacing the editing system.
+**Why:** El usuario quiere simplificar la entrega al cliente, sin frameworks innecesarios para una web estática. El contenido debe seguir disponible sin JavaScript, incluso para buscadores y en celulares lentos.
 
-**How to apply:** Regenerate snapshots after content changes, verify both JavaScript-disabled pages and activated interactions. Do not edit generated snapshots as the source of truth. Keep production routing consistent with preview: the previous catch-all rewrite to the homepage prevented distinct clean URLs; permanent legacy URL redirects require the lightweight production server.
+**How to apply:** Conservar contenido, diseño, idiomas y carruseles al sustituir el sistema antiguo; servir HTML completo directamente. Mantener rutas y redirecciones iguales en vista previa y producción, sin un rewrite global al inicio; un servidor mínimo de Node.js puede conservar las redirecciones sin Express.
 
 The entire corporate site must be available in Spanish and English. Use natural business English while preserving brand names, dates, quantities and contact information.
 
