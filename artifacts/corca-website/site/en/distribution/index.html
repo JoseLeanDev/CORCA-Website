@@ -2149,26 +2149,51 @@
                 </div>
               </div>
               <div style="padding: 34px">
-                <div
-                  style="
-                    font-size: 12.5px;
-                    letter-spacing: 0.14em;
-                    text-transform: uppercase;
-                    color: rgb(139, 149, 166);
-                    font-weight: 700;
-                    margin-bottom: 18px;
-                  "
-                >
-                  Products
-                </div>
-                <div
-                  class="rg-4"
-                  style="
-                    display: grid;
-                    grid-template-columns: repeat(4, 1fr);
-                    gap: 16px;
-                  "
-                >
+                <div id="padova-carousel" class="cw-brand-carousel">
+                  <div class="cw-brand-carousel-head">
+                    <div
+                      style="
+                        font-size: 12.5px;
+                        letter-spacing: 0.14em;
+                        text-transform: uppercase;
+                        color: rgb(139, 149, 166);
+                        font-weight: 700;
+                      "
+                    >
+                      Products
+                    </div>
+                    <div class="cw-brand-carousel-controls">
+                      <button
+                        type="button"
+                        class="cw-brand-carousel-button"
+                        aria-label="View previous product"
+                        data-carousel-direction="-1"
+                        aria-controls="padova-carousel-viewport"
+                      >
+                        ‹
+                      </button>
+                      <button
+                        type="button"
+                        class="cw-brand-carousel-button"
+                        aria-label="View next product"
+                        data-carousel-direction="1"
+                        aria-controls="padova-carousel-viewport"
+                      >
+                        ›
+                      </button>
+                    </div>
+                  </div>
+                  <div class="cw-brand-carousel-hint">
+                    Swipe to see all products
+                  </div>
+                  <div
+                    class="cw-brand-carousel-viewport"
+                    role="region"
+                    aria-label="Padova products"
+                    tabindex="0"
+                    id="padova-carousel-viewport"
+                  >
+                    <div class="cw-brand-carousel-track">
                   <div>
                     <div
                       style="
@@ -2287,6 +2312,20 @@
                         "
                       />
                     </div>
+                  </div>
+                      <div>
+                        <div class="cw-brand-carousel-image">
+                          <img
+                            src="/assets/padova-prod-5.webp"
+                            alt="Padova fusilli pasta, 200 g"
+                            width="720"
+                            height="720"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      </div>
+                </div>
                   </div>
                 </div>
               </div>

@@ -319,7 +319,8 @@
   gap: 16px;
   padding-bottom: 6px;
 }
-.cw-brand-carousel-slide {
+.cw-brand-carousel-slide,
+.cw-brand-carousel-track > div {
   flex: 0 0 calc((100% - 48px) / 4);
   min-width: 0;
   scroll-snap-align: start;
@@ -340,7 +341,8 @@
 }
 
 @media (max-width: 768px) {
-  .cw-brand-carousel-slide { flex-basis: min(82%, 280px); }
+  .cw-brand-carousel-slide,
+  .cw-brand-carousel-track > div { flex-basis: min(82%, 280px); }
   .cw-brand-carousel-hint {
     display: block;
     margin: -7px 0 12px;
